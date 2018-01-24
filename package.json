@@ -1,0 +1,26 @@
+{
+  "name": "ihealth-backend",
+  "version": "1.0.0",
+  "description": "Backend tfm para Android e iOS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMiguelDB/ihealth-backend.git"
+  },
+  "author": "José Miguel Domínguez Bobillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JMiguelDB/ihealth-backend/issues"
+  },
+  "homepage": "https://github.com/JMiguelDB/ihealth-backend#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "parse-server": "^2.7.1"
+  }
+}
