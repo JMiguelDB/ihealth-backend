@@ -4,9 +4,6 @@
   "description": "Backend tfm para Android e iOS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "scripts": {
     "start": "node index.js"
   },
   "repository": {

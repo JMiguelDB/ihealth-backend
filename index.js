@@ -3,9 +3,19 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+var pushConfig = {};
 
+//Comprobamos que hay direccion a la BBDD
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
+}
+
+//Comprobamos que existen definidas las variables para la conexion con Android
+if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
+  pushConfig['android'] = { 
+    senderId: process.env.SENDER_ID || 'sender_id',
+    apiKey: process.env.API_KEY || 'api_key'
+  };
 }
 
 var api = new ParseServer({
@@ -14,14 +24,9 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
-  push: {
-    android: {
-      senderId: process.env.SENDER_ID,
-      apiKey: process.env.API_KEY
-    }
-  },
+  push: pushConfig,
   liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+    classNames: ["Posts", "Comments", "Message"] // List of classes to support for query subscriptions
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
